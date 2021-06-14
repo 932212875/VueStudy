@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on 的实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js">
+
+    </script>
+</head>
+<body>
+    <h1>v-on 的实例</h1>
+    <hr>
+    <div id="app">
+        本场比赛得分：{{number}}
+        <p>
+            <button v-on:click="add">加分</button>
+            <button @click="sub">减分</button>
+            <br/>
+            <input type="text" v-on:keyup.enter="onEnter" v-model="number2">
+            <input type="text" v-on:keyup.13="onEnter" v-model="number2">
+        </p>
+    </div>
+    <script type="text/javascript">
+        var aaa = new Vue({
+            el:'#app',
+            data:{
+                number:0,
+                number2:1
+            },
+            methods:{
+                add:function(){
+                    this.number++;
+                },
+                sub:function(){
+                    this.number--;
+                },
+                onEnter:function(){
+                    this.number = this.number + parseInt(this.number2);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
